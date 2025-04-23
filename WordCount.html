@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Count</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #e6f4ea;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #2e7d32;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 80%;
+      max-width: 600px;
+      height: 200px;
+      padding: 15px;
+      font-size: 1rem;
+      border: 2px solid #a5d6a7;
+      border-radius: 10px;
+      background-color: #f1f8f4;
+      color: #2e7d32;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 1rem;
+      background-color: #66bb6a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(102, 187, 106, 0.4);
+    }
+
+    button:hover {
+      background-color: #558b2f;
+    }
+
+    .count {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Word Counter</h1>
+
+  <textarea id="str" placeholder="Type your text here"></textarea>
+
+  <div class="btn-group">
+    <button onclick="getStr()">Count</button>
+    <button onclick="clearText()">Clear</button>
+  </div>
+
+  <div class="count" id="wordCountDisplay"></div>
+
+  <script>
+    function getStr() {
+      const str = document.getElementById("str").value;
+      const count = countWords(str);
+      document.getElementById("wordCountDisplay").textContent = `Word Count: ${count}`;
+    }
+
+    function countWords(str) {
+      const words = str.trim().split(/\s+/);
+      return str.trim() === "" ? 0 : words.length;
+    }
+
+    function clearText() {
+      document.getElementById("str").value = "";
+      document.getElementById("wordCountDisplay").textContent = "";
+    }
+  </script>
+
+</body>
+
+</html>
